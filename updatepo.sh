@@ -22,6 +22,7 @@ for name in *; do
 	cat $(find "$name/" -name '*.lua') >>"$luafile"
 	lua "$p/findtext.lua" -o "$name/locale/template.txt" "$luafile"
 
+	continue # doesn't work as wanted, so not done
 	echo "Updating translations for $name"
 	pushd "$name/locale"
 	for tl in *.tr; do

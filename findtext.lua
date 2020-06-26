@@ -265,16 +265,14 @@ for _, file in ipairs(inputs) do
 end
 
 for textdomain, mtbl in pairs(messages) do
-	table.sort(messages[textdomain])
-
-	local last_msg
+	local last_msg = {}
 	printf("# textdomain: %s\n", textdomain)
 
 	for _, msg in ipairs(messages[textdomain]) do
-		if msg ~= last_msg then
+		if not last_msg[msg] then
 			printf("%s=\n", msg)
 		end
-		last_msg = msg
+		last_msg[msg] = true
 	end
 end
 
